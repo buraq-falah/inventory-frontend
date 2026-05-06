@@ -15,55 +15,48 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
+import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, Store, Calendar, PackageSearch, ChartColumnStacked, BadgeDollarSign } from "lucide-react"
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "admin",
+    email: "admin@admin.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "dashboard",
       icon: (
         <LayoutDashboardIcon
         />
       ),
     },
     {
-      title: "Lifecycle",
-      url: "#",
+      title: "Categories",
+      url: "dashboard/categories",
       icon: (
-        <ListIcon
+        <ChartColumnStacked
         />
       ),
     },
     {
-      title: "Analytics",
-      url: "#",
+      title: "Products",
+      url: "dashboard/products",
       icon: (
-        <ChartBarIcon
+        <PackageSearch
         />
       ),
     },
     {
-      title: "Projects",
-      url: "#",
+      title: "Sales",
+      url: "dashboard/sales",
       icon: (
-        <FolderIcon
+        <BadgeDollarSign
         />
       ),
     },
-    {
-      title: "Team",
-      url: "#",
-      icon: (
-        <UsersIcon
-        />
-      ),
-    },
+
   ],
   navClouds: [
     {
@@ -125,7 +118,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "dashboard/settings",
       icon: (
         <Settings2Icon
         />
@@ -150,24 +143,24 @@ const data = {
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
+      name: "Daily report",
+      url: "dashboard/reports/daily",
       icon: (
-        <DatabaseIcon
+        <Calendar
         />
       ),
     },
     {
-      name: "Reports",
-      url: "#",
+      name: "weekly report",
+      url: "dashboard/reports/weekly",
       icon: (
         <FileChartColumnIcon
         />
       ),
     },
     {
-      name: "Word Assistant",
-      url: "#",
+      name: "Monthly report",
+      url: "dashboard/reports/monthly",
       icon: (
         <FileIcon
         />
@@ -187,8 +180,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
               <a href="#">
-                <CommandIcon className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <Store className="size-5!" />
+                <span className="text-base font-semibold">Karum</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

@@ -8,7 +8,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { CirclePlusIcon, MailIcon } from "lucide-react"
+import { CirclePlusIcon, MailIcon, Monitor } from "lucide-react"
+import Link from "next/link"
 
 export function NavMain({
   items,
@@ -37,7 +38,7 @@ export function NavMain({
               className="size-8 group-data-[collapsible=icon]:opacity-0"
               variant="outline"
             >
-              <MailIcon
+              <Monitor
               />
               <span className="sr-only">Inbox</span>
             </Button>
@@ -45,12 +46,14 @@ export function NavMain({
         </SidebarMenu>
         <SidebarMenu>
           {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
+            <Link key={item.title} href={item.url} passHref>
+            <SidebarMenuItem>
               <SidebarMenuButton tooltip={item.title}>
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
+            </Link>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>
