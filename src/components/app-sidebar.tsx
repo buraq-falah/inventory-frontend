@@ -15,18 +15,19 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, Store, Calendar, PackageSearch, ChartColumnStacked, BadgeDollarSign } from "lucide-react"
+import { LayoutDashboardIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, FileChartColumnIcon, FileIcon, Store, Calendar, PackageSearch, ChartColumnStacked, BadgeDollarSign } from "lucide-react"
+import { useSession } from "next-auth/react"
 
 const data = {
   user: {
-    name: "admin",
+    name: "buraq",
     email: "admin@admin.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "dashboard",
+      url: "/dashboard",
       icon: (
         <LayoutDashboardIcon
         />
@@ -34,7 +35,7 @@ const data = {
     },
     {
       title: "Categories",
-      url: "dashboard/categories",
+      url: "/dashboard/categories",
       icon: (
         <ChartColumnStacked
         />
@@ -42,7 +43,7 @@ const data = {
     },
     {
       title: "Products",
-      url: "dashboard/products",
+      url: "/dashboard/products",
       icon: (
         <PackageSearch
         />
@@ -50,7 +51,7 @@ const data = {
     },
     {
       title: "Sales",
-      url: "dashboard/sales",
+      url: "/dashboard/sales",
       icon: (
         <BadgeDollarSign
         />
@@ -118,7 +119,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "dashboard/settings",
+      url: "/dashboard/settings",
       icon: (
         <Settings2Icon
         />
@@ -144,7 +145,7 @@ const data = {
   documents: [
     {
       name: "Daily report",
-      url: "dashboard/reports/daily",
+      url: "/dashboard/reports/daily",
       icon: (
         <Calendar
         />
@@ -152,7 +153,7 @@ const data = {
     },
     {
       name: "weekly report",
-      url: "dashboard/reports/weekly",
+      url: "/dashboard/reports/weekly",
       icon: (
         <FileChartColumnIcon
         />
@@ -160,7 +161,7 @@ const data = {
     },
     {
       name: "Monthly report",
-      url: "dashboard/reports/monthly",
+      url: "/dashboard/reports/monthly",
       icon: (
         <FileIcon
         />
@@ -169,7 +170,9 @@ const data = {
   ],
 }
 
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { data: session } = useSession()
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -193,7 +196,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   )
